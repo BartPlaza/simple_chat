@@ -1,6 +1,6 @@
 const socket = new WebSocket("ws://localhost:8080/ws");
 
-const connect = () => {
+const connect = (callback) => {
 
     console.log('Attempt connect');
 
@@ -17,6 +17,7 @@ const connect = () => {
     };
 
     socket.onmessage = (message) => {
+        callback(message)
         console.log(message);
     };
 };
